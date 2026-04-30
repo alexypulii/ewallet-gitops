@@ -7,14 +7,14 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: registry.gitlab.com/zimble
+    - repoURL: registry-1.docker.io/techino
       chart: ewallet-app-of-apps
       targetRevision: 1.0.0
       helm:
         valueFiles:
           - $infra/envs/dev/infra/infra.yaml
           - $infra/envs/dev/infra/apps.yaml
-    - repoURL: https://gitlab.com/zimble/ewallet-gitops.git
+    - repoURL: https://github.com/alexypulii/ewallet-gitops.git
       targetRevision: dev
       ref: infra
   destination:

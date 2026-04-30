@@ -1,5 +1,5 @@
-registry: registry.gitlab.com/zimble
-repoURL: https://gitlab.com/zimble/ewallet-gitops.git
+registry: registry-1.docker.io/techino
+repoURL: https://github.com/alexypulii/ewallet-gitops.git
 targetRevision: dev
 namespace: ewallet-dev
 valuesPath: envs/dev/values
