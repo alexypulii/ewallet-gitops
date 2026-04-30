@@ -2,13 +2,56 @@
 # Only image.tag changes here — nothing else
 
 customer-maintenance:
+  deploymentType: standard
   image:
     tag: "stable-alpine"
+  service:
+    port: 80
+    targetPort: 80
+  livenessProbe:
+    httpGet:
+      path: /
+      port: 80
+    initialDelaySeconds: 10
+    periodSeconds: 15
+  readinessProbe:
+    httpGet:
+      path: /
+      port: 80
+    initialDelaySeconds: 5
+    periodSeconds: 10
 
 account-maintenance:
+  deploymentType: knative
   image:
     tag: "stable-alpine"
+  service:
+    port: 80
+    targetPort: 80
+  knative:
+    minScale: 0
+    maxScale: 5
 
 authorization-maintenance:
+  deploymentType: keda
   image:
     tag: "stable-alpine"
+  service:
+    port: 80
+    targetPort: 80
+  livenessProbe:
+    httpGet:
+      path: /
+      port: 80
+    initialDelaySeconds: 10
+    periodSeconds: 15
+  readinessProbe:
+    httpGet:
+      path: /
+      port: 80
+    initialDelaySeconds: 5
+    periodSeconds: 10
+  keda:
+    minReplicas: 1
+    maxReplicas: 5
+    triggers: []
