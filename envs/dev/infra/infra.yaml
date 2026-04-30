@@ -1,0 +1,5 @@
+registry: registry.gitlab.com/zimble
+repoURL: https://gitlab.com/zimble/ewallet-gitops.git
+targetRevision: dev
+namespace: ewallet-dev
+valuesPath: envs/dev/values

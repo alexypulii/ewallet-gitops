@@ -1,0 +1,14 @@
+# Updated automatically by each service repo CI pipeline
+# Only image.tag changes here — nothing else
+
+customer-maintenance:
+  image:
+    tag: "stable-alpine"
+
+account-maintenance:
+  image:
+    tag: "stable-alpine"
+
+authorization-maintenance:
+  image:
+    tag: "stable-alpine"

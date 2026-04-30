@@ -1,0 +1,26 @@
+# kubectl apply -f root.yaml   ← run ONCE to bootstrap
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ewallet-root
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: registry.gitlab.com/zimble
+      chart: ewallet-app-of-apps
+      targetRevision: 1.0.0
+      helm:
+        valueFiles:
+          - $infra/envs/dev/infra/infra.yaml
+          - $infra/envs/dev/infra/apps.yaml
+    - repoURL: https://gitlab.com/zimble/ewallet-gitops.git
+      targetRevision: dev
+      ref: infra
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
